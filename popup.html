@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>elepaint</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components/header.css">
+  <link rel="stylesheet" href="styles/components/swatches.css">
+  <link rel="stylesheet" href="styles/components/controls.css">
+</head>
+<body>
+  <div id="app">
+
+    <header>
+      <span id="title">elepaint</span>
+      <button id="close-btn" title="Close">&#x2715;</button>
+    </header>
+
+    <p id="subtitle">
+      <span id="ratio">60:30:10</span> color palettes&thinsp;|&thinsp;&thinsp;<span id="harmony-name"></span>
+    </p>
+
+    <div id="swatches">
+      <div class="swatch" id="swatch-0">
+        <span class="swatch-hex"></span>
+        <span class="swatch-copied-msg">copied</span>
+      </div>
+      <div class="swatch" id="swatch-1">
+        <span class="swatch-hex"></span>
+        <span class="swatch-copied-msg">copied</span>
+      </div>
+      <div class="swatch" id="swatch-2">
+        <span class="swatch-hex"></span>
+        <span class="swatch-copied-msg">copied</span>
+      </div>
+    </div>
+
+    <div id="controls">
+      <button id="generate-btn">Generate</button>
+      <select id="harmony-select">
+        <option value="random">Random</option>
+        <option value="analogous">Analogous</option>
+        <option value="complementary">Complementary</option>
+        <option value="triadic">Triadic</option>
+        <option value="split-complementary">Split-Comp.</option>
+        <option value="monochromatic">Monochromatic</option>
+      </select>
+    </div>
+
+  </div>
+  <script src="scripts/popup.js"></script>
+</body>
+</html>

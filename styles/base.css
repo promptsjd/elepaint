@@ -1,0 +1,36 @@
+/* Base — reset, body, app shell. Consumes tokens from tokens.css. */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--clr-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Standalone mode: running as a plain browser tab, not as extension popup */
+body.standalone {
+  background: var(--clr-bg-standalone);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 56px 20px;
+}
+
+#app {
+  background: var(--clr-bg);
+  width: var(--app-width);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  border-radius: var(--radius-app);
+}
+
+body.standalone #app {
+  box-shadow:
+    0 10px 48px var(--clr-shadow-a),
+    0 2px  8px  var(--clr-shadow-b);
+}

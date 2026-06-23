@@ -1,0 +1,102 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design Tokens — single source of truth for every visual value in elepaint.
+
+   HOW TO USE:
+   • Change a color, spacing, or radius here — it propagates everywhere.
+   • To add dark mode: add a @media (prefers-color-scheme: dark) block below
+     and override only the color tokens. Nothing else in any other file changes.
+   • To rebrand: touch only this file.
+───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Colors ─────────────────────────────────────────────────────────────── */
+  --clr-bg:                  #ffffff;
+  --clr-bg-standalone:       #e4e4e4;
+
+  --clr-surface:             #f2f2f2;    /* select, secondary backgrounds     */
+  --clr-surface-hover:       #e8e8e8;    /* select hover                      */
+  --clr-hover-bg:            #f0f0f0;    /* icon button hover fill            */
+
+  --clr-text-1:              #111111;    /* primary text, brand name          */
+  --clr-text-2:              #222222;    /* select option text                */
+  --clr-text-muted:          #8c8c8c;    /* subtitle, secondary info          */
+  --clr-icon-default:        #bbbbbb;    /* close button resting state        */
+  --clr-icon-hover:          #444444;    /* close button hovered              */
+
+  --clr-accent-bg:           #111111;    /* generate button fill              */
+  --clr-accent-hover:        #2d2d2d;    /* generate button hover             */
+  --clr-accent-fg:           #ffffff;    /* generate button label             */
+
+  --clr-ring:                rgba(0, 0, 0, 0.06);   /* swatch inset border    */
+  --clr-focus-ring:          rgba(0, 0, 0, 0.10);   /* select focus outline   */
+  --clr-shadow-a:            rgba(0, 0, 0, 0.13);   /* standalone card shadow */
+  --clr-shadow-b:            rgba(0, 0, 0, 0.06);   /* standalone card shadow */
+  --clr-swatch-hover-shadow: rgba(0, 0, 0, 0.18);   /* swatch lift shadow     */
+
+  /* ── Typography ─────────────────────────────────────────────────────────── */
+  --font-sans:          -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:          'SF Mono', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+  --font-mono-subtitle: 'Consolas', 'Cascadia Code', 'SF Mono', 'Monaco', monospace;
+
+  --text-2xs:  10px;    /* copied label                                       */
+  --text-xs:   10.5px;  /* subtitle                                           */
+  --text-sm:   12px;    /* hex label, select                                  */
+  --text-base: 13px;    /* generate button                                    */
+  --text-lg:   15px;    /* close icon                                         */
+  --text-xl:   16px;    /* app title                                          */
+
+  /* ── Spacing ────────────────────────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  11px;
+  --space-4:  13px;
+  --space-5:  16px;
+  --space-6:  18px;
+
+  /* ── Radii ──────────────────────────────────────────────────────────────── */
+  --radius-app:     22px;
+  --radius-swatch:  15px;
+  --radius-control: 11px;
+  --radius-icon:    50%;
+
+  /* ── Layout ─────────────────────────────────────────────────────────────── */
+  --app-width:      292px;
+  --swatch-height:  94px;
+  --icon-btn-size:  24px;
+  --select-width:   144px;
+
+  /* ── Motion ─────────────────────────────────────────────────────────────── */
+  --dur-snap: 0.06s;   /* active/pressed feedback — instant feel              */
+  --dur-base: 0.13s;   /* swatch transform + shadow                           */
+  --dur-slow: 0.14s;   /* button/select background transitions                */
+  --dur-fade: 0.15s;   /* hex label opacity                                   */
+  --dur-copy: 0.12s;   /* copied message opacity                              */
+}
+
+/* ── Dark mode — flip color tokens only; nothing else in any file changes ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-bg:                  #1a1a1a;
+    --clr-bg-standalone:       #0f0f0f;
+
+    --clr-surface:             #2a2a2a;
+    --clr-surface-hover:       #333333;
+    --clr-hover-bg:            #2a2a2a;
+
+    --clr-text-1:              #f0f0f0;
+    --clr-text-2:              #d4d4d4;
+    --clr-text-muted:          #888888;
+    --clr-icon-default:        #555555;
+    --clr-icon-hover:          #cccccc;
+
+    --clr-accent-bg:           #f0f0f0;
+    --clr-accent-hover:        #d4d4d4;
+    --clr-accent-fg:           #111111;
+
+    --clr-ring:                rgba(255, 255, 255, 0.08);
+    --clr-focus-ring:          rgba(255, 255, 255, 0.15);
+    --clr-shadow-a:            rgba(0, 0, 0, 0.50);
+    --clr-shadow-b:            rgba(0, 0, 0, 0.30);
+    --clr-swatch-hover-shadow: rgba(0, 0, 0, 0.40);
+  }
+}

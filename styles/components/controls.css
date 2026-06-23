@@ -1,0 +1,62 @@
+/* Controls — generate button + harmony selector */
+
+#controls {
+  display: flex;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+#generate-btn {
+  flex: 1;
+  padding: var(--space-3) 0;
+  background: var(--clr-accent-bg);
+  color: var(--clr-accent-fg);
+  border: none;
+  border-radius: var(--radius-control);
+  font-size: var(--text-base);
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.15px;
+  font-family: inherit;
+  transition: background var(--dur-slow), transform 0.1s;
+}
+
+#generate-btn:hover {
+  background: var(--clr-accent-hover);
+}
+
+#generate-btn:active {
+  transform: scale(0.975);
+  transition-duration: var(--dur-snap);
+}
+
+#harmony-select {
+  width: var(--select-width);
+  flex-shrink: 0;
+  padding: 0 26px 0 11px;
+  background-color: var(--clr-surface);
+  /* Custom chevron via inline SVG — avoids an extra network request */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px 5px;
+  color: var(--clr-text-2);
+  border: none;
+  border-radius: var(--radius-control);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: background-color var(--dur-slow);
+}
+
+#harmony-select:hover {
+  background-color: var(--clr-surface-hover);
+}
+
+#harmony-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--clr-focus-ring);
+}

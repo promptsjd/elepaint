@@ -1,0 +1,54 @@
+/* Header — app title, close button, subtitle + harmony label */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-1);
+}
+
+#title {
+  font-size: var(--text-xl);
+  font-weight: 650;
+  color: var(--clr-text-1);
+  letter-spacing: -0.4px;
+}
+
+#close-btn {
+  background: none;
+  border: none;
+  color: var(--clr-icon-default);
+  font-size: var(--text-lg);
+  line-height: 1;
+  cursor: pointer;
+  width: var(--icon-btn-size);
+  height: var(--icon-btn-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-icon);
+  transition: background var(--dur-slow), color var(--dur-slow);
+  padding: 0;
+}
+
+#close-btn:hover {
+  background: var(--clr-hover-bg);
+  color: var(--clr-icon-hover);
+}
+
+#subtitle {
+  font-size: var(--text-xs);
+  color: var(--clr-text-muted);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin-bottom: var(--space-4);
+}
+
+#ratio {
+  font-weight: 650;
+}
+
+#harmony-name {
+  font-family: var(--font-mono-subtitle);
+  letter-spacing: 0.06em;
+}
