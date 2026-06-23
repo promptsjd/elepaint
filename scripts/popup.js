@@ -349,9 +349,32 @@ const ControlsUI = (() => {
 
 (function() {
 
+  var STORAGE_PALETTE = 'elepaint.palette';
+  var STORAGE_HARMONY = 'elepaint.harmony';
+
   function isExtensionContext() {
     try { return !!(typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id); }
     catch (e) { return false; }
+  }
+
+  // Saves the current palette and harmony selection to localStorage so the
+  // popup reopens exactly where the user left it.
+  function saveToStorage(palette, harmonyId) {
+    try {
+      localStorage.setItem(STORAGE_PALETTE, JSON.stringify(palette));
+      localStorage.setItem(STORAGE_HARMONY, harmonyId);
+    } catch (e) {}
+  }
+
+  // Returns { palette, harmonyId } from localStorage, or null if nothing saved.
+  function loadFromStorage() {
+    try {
+      var raw = localStorage.getItem(STORAGE_PALETTE);
+      var harmonyId = localStorage.getItem(STORAGE_HARMONY) || 'random';
+      return raw ? { palette: JSON.parse(raw), harmonyId: harmonyId } : null;
+    } catch (e) {
+      return null;
+    }
   }
 
   function generate() {
@@ -363,6 +386,7 @@ const ControlsUI = (() => {
     State.setPalette(palette);
     SwatchUI.renderPalette(palette);
     ControlsUI.setHarmonyLabel(palette.harmonyLabel);
+    saveToStorage(palette, State.state.harmonyId);
   }
 
   if (!isExtensionContext()) {
@@ -374,6 +398,16 @@ const ControlsUI = (() => {
   ControlsUI.bindHarmonySelect(function(id) { State.setHarmony(id); generate(); });
   ControlsUI.bindCloseButton();
 
-  generate();
+  // On open: restore last session if available, otherwise generate fresh.
+  var saved = loadFromStorage();
+  if (saved) {
+    State.setHarmony(saved.harmonyId);
+    State.setPalette(saved.palette);
+    SwatchUI.renderPalette(saved.palette);
+    ControlsUI.setHarmonyLabel(saved.palette.harmonyLabel);
+    document.getElementById('harmony-select').value = saved.harmonyId;
+  } else {
+    generate();
+  }
 
 })();
